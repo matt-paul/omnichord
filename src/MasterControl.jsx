@@ -1,32 +1,34 @@
-import React from "react"
+import React from 'react';
+import OnOffButton from './components/on-off-button';
+import VolumeKnob from './components/volume-knob';
 
-class Omnichord extends React.Component {
-  constructor(props) {
-    super(props)
+class MasterControl extends React.Component {
+  constructor (props) {
+    super (props);
     this.state = {
-      on: "hello",
-    }
-    this.toggleClick = this.toggleClick.bind(this)
+      on: 'hello',
+    };
+    this.toggleClick = this.toggleClick.bind (this);
   }
-  toggleClick() {
-    this.setState({
+  toggleClick () {
+    this.setState ({
       on: !this.state.on,
-    })
+    });
   }
-  render() {
+  render () {
     return (
-      <div onClick={this.toggleClick}>
+      <div style={styles.masterControl}>
         <svg width="355" height="300" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-82 -77)" fill="none" fill-rule="evenodd">
+          <g transform="translate(-82 -77)" fill="none" fillRule="evenodd">
             <path
               d="M435 375V79L85 80c24.5 69.67 70.08 132.5 136.75 188.52 66.66 56 137.74 91.5 213.25 106.48z"
               stroke="#000"
-              stroke-width="3"
+              strokeWidth="3"
               fill="#AD8E6A"
             />
             <text
-              font-family="ArialUnicodeMS, Arial Unicode MS"
-              font-size="14"
+              fontFamily="ArialUnicodeMS, Arial Unicode MS"
+              fontSize="14"
               fill="#200C02"
               transform="translate(272 252)"
             >
@@ -37,11 +39,11 @@ class Omnichord extends React.Component {
             <path
               d="M272 254h130M272 270h130"
               stroke="#200C02"
-              stroke-linecap="square"
+              strokeLinecap="square"
             />
             <text
-              font-family="ArialUnicodeMS, Arial Unicode MS"
-              font-size="12"
+              fontFamily="ArialUnicodeMS, Arial Unicode MS"
+              fontSize="12"
               fill="#200C02"
             >
               <tspan x="227" y="216">
@@ -49,8 +51,8 @@ class Omnichord extends React.Component {
               </tspan>
             </text>
             <text
-              font-family="ArialUnicodeMS, Arial Unicode MS"
-              font-size="12"
+              fontFamily="ArialUnicodeMS, Arial Unicode MS"
+              fontSize="12"
               fill="#200C02"
             >
               <tspan x="345" y="216">
@@ -62,15 +64,10 @@ class Omnichord extends React.Component {
               stroke="#805653"
               fill="#805653"
             />
-            <path
-              stroke="#900921"
-              fill="#900921"
-              stroke-linejoin="round"
-              d="M227 142v40h31v-40z"
-            />
+
             <circle
               stroke="#979797"
-              fill={this.state.on ? "red" : "#3B111A"}
+              fill={this.state.on ? 'red' : '#3B111A'}
               cx="243"
               cy="113"
               r="7"
@@ -93,15 +90,23 @@ class Omnichord extends React.Component {
               <path
                 d="M36 52L23 73"
                 stroke="#1D1313"
-                stroke-width="4"
-                stroke-linecap="square"
+                strokeWidth="4"
+                strokeLinecap="square"
               />
             </g>
           </g>
         </svg>
+        <OnOffButton toggleOnOff={this.toggleClick} on={this.state.on} />
+        <VolumeKnob />
       </div>
-    )
+    );
   }
 }
 
-export default Omnichord
+const styles = {
+  masterControl: {
+    position: 'relative',
+  },
+};
+
+export default MasterControl;
