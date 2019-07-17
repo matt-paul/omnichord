@@ -1,9 +1,10 @@
 import React from "react"
-import MasterControl from "./MasterControl"
+import MasterControl from "./components/master-control"
 
-const Omnichord = () => 
-<div>
-<MasterControl />
-</div>
+const Omnichord = () => (
+  <div>
+    <MasterControl />
+  </div>
+)
 
 export default Omnichord
