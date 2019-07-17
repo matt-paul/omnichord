@@ -1,46 +1,29 @@
 import React from "react"
 import OnOffButton from "../on-off-button"
-import VolumeKnob from "../volume-knob"
+import VolumeControl from "../knob"
 
 class MasterControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      on: "hello",
+      on: false,
       volume: 0,
     }
-    this.toggleClick = this.toggleClick.bind(this)
-    this.setVolume = this.setVolume.bind(this)
+    this.togglePower = this.togglePower.bind(this)
   }
-  toggleClick() {
+  togglePower() {
     this.setState({
       on: !this.state.on,
     })
   }
-  setVolume(mouseUp, mouseDown) {
-    const difference = mouseDown.y - mouseUp.y
 
-    const volumeAdjustment = diff => {
-      const turnUpVolume = diff < -10
-      const turnDownVolume = diff > 10
-      if (turnUpVolume) {
-        return 16
-      }
-      if (turnDownVolume) {
-        return -16
-      }
-      return 0
-    }
-
+  handleChange = newValue => {
     this.setState({
-      volume: this.state.volume + volumeAdjustment(difference),
+      volume: newValue,
     })
-    // this.setState({
-    //   volume: volumeChange,
-    // })
   }
   render() {
-    console.log(this.state.volume)
+    console.log(this.state)
     return (
       <div style={styles.masterControl}>
         <svg width="355" height="300" xmlns="http://www.w3.org/2000/svg">
@@ -102,8 +85,8 @@ class MasterControl extends React.Component {
           </g>
         </svg>
 
-        <OnOffButton toggleOnOff={this.toggleClick} on={this.state.on} />
-        <VolumeKnob setVolume={this.setVolume} volume={this.state.volume} />
+        <OnOffButton toggleOnOff={this.togglePower} on={this.state.on} />
+        <VolumeControl onChange={this.handleChange} />
       </div>
     )
   }
