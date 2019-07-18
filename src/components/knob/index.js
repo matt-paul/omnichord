@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 
-const NewKnob = ({ onChange }) => {
+const Knob = ({ onChange }) => {
   const START_ANGLE = 10
   const END_ANGLE = 280
-  const START_VOLUME = 0
   const MIN_VOLUME = 1
   const MAX_VOLUME = 128
 
@@ -25,9 +24,11 @@ const NewKnob = ({ onChange }) => {
       const getDegree = (cX, cY, pts) => {
         const x = cX - pts.x
         const y = cY - pts.y
+
         let deg = (Math.atan(y / x) * 180) / Math.PI
         // What exactly do these below 'ere mean?
-        if ((x < 0 && y >= 0) || (x < 0 && y < 0)) {
+        const firstHalfRotation = (x < 0 && y >= 0) || (x < 0 && y < 0)
+        if (firstHalfRotation) {
           deg += 90
         } else {
           deg += 270
@@ -36,6 +37,7 @@ const NewKnob = ({ onChange }) => {
       }
 
       const currentDegree = getDegree(event.clientX, event.clientY, pts)
+
       setDegree(currentDegree)
 
       const newVolume = Math.floor(
@@ -63,7 +65,7 @@ const NewKnob = ({ onChange }) => {
       style={{
         width: "78px",
         height: "78px",
-        transform: `rotate(${degree}deg)`,
+        transform: `rotate(${Math.min(degree, 260)}deg)`,
         position: "absolute",
         left: "249px",
         top: "46px",
@@ -96,4 +98,4 @@ const NewKnob = ({ onChange }) => {
   )
 }
 
-export default NewKnob
+export default Knob

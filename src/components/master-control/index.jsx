@@ -1,5 +1,5 @@
 import React from "react"
-import OnOffButton from "../on-off-button"
+import OnOffButton from "../button"
 import VolumeControl from "../knob"
 
 class MasterControl extends React.Component {
@@ -23,7 +23,6 @@ class MasterControl extends React.Component {
     })
   }
   render() {
-    console.log(this.state)
     return (
       <div style={styles.masterControl}>
         <svg width="355" height="300" xmlns="http://www.w3.org/2000/svg">
