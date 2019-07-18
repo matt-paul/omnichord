@@ -1,0 +1,26 @@
+.red-button,
+.blue-button,
+.brown-button {
+  background: none;
+  border: none;
+}
+
+.red-button {
+  left: 136px;
+  position: absolute;
+  top: 66px;
+}
+
+.brown-button,
+.blue-button {
+  position: absolute;
+  top: 125px;
+}
+
+.brown-button {
+  right: 125px;
+}
+
+.blue-button {
+  right: 45px;
+}

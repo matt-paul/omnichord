@@ -1,5 +1,6 @@
 import React from "react"
-import OnOffButton from "../button"
+import { RedButton } from "../button/index"
+
 import SectionContainer from "../section-container"
 import VolumeControl from "../knob"
 
@@ -85,7 +86,7 @@ class MasterControl extends React.Component {
           </g>
         </svg>
 
-        <OnOffButton toggleOnOff={this.togglePower} on={this.state.on} />
+        <RedButton toggleOnOff={this.togglePower} on={this.state.on} />
         <div
           style={{
             width: "78px",

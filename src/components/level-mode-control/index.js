@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import Knob from "../knob"
-import Button from "../button"
+import { BrownButton, BlueButton } from "../button"
 import SectionContainer from "../section-container"
 
 import "./style.css"
@@ -11,6 +11,8 @@ const LevelModeControl = () => {
     stringSustain: 0,
     stringVolume: 0,
     chordVolume: 0,
+    chordHoldToggle: false,
+    autoBassManualToggle: false,
   })
   const handleStringSustain = value =>
     setState({ ...state, stringSustain: value })
@@ -19,6 +21,12 @@ const LevelModeControl = () => {
     setState({ ...state, stringVolume: value })
 
   const handleChordVolume = value => setState({ ...state, chordVolume: value })
+
+  const handleChordHoldToggle = () =>
+    setState({ ...state, chordHoldToggle: !state.chordHoldToggle })
+
+  const handleAutoBassManualToggle = () =>
+    setState({ ...state, autoBassManualToggle: !state.autoBassManualToggle })
 
   return (
     <SectionContainer>
@@ -169,8 +177,14 @@ const LevelModeControl = () => {
       <div className={"chord-volume"}>
         <Knob onChange={handleChordVolume} />
       </div>
-      <Button />
-      <Button />
+      <BrownButton
+        toggleOnOff={handleChordHoldToggle}
+        on={state.chordHoldToggle}
+      />
+      <BlueButton
+        toggleOnOff={handleAutoBassManualToggle}
+        on={state.autoBassManualToggle}
+      />
     </SectionContainer>
   )
 }
