@@ -2,7 +2,7 @@ import React from "react"
 
 const Button = ({ toggleOnOff, on }) => (
   <button style={styles.button} onClick={toggleOnOff}>
-    <svg width="33" height="42" xmlns="http://www.w3.org/2000/svg">
+    <svg width="33" height="42">
       <path
         d="M1 1v40h31V1z"
         fill="#900921"

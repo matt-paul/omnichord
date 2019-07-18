@@ -1,14 +1,28 @@
-import React from "react"
+import React, { useState } from "react"
 
 import Knob from "../knob"
 import Button from "../button"
 import SectionContainer from "../section-container"
 
 import "./style.css"
+
 const LevelModeControl = () => {
+  const [state, setState] = useState({
+    stringSustain: 0,
+    stringVolume: 0,
+    chordVolume: 0,
+  })
+  const handleStringSustain = value =>
+    setState({ ...state, stringSustain: value })
+
+  const handleStringVolume = value =>
+    setState({ ...state, stringVolume: value })
+
+  const handleChordVolume = value => setState({ ...state, chordVolume: value })
+
   return (
     <SectionContainer>
-      <svg width="364" height="353" xmlns="http://www.w3.org/2000/svg">
+      <svg width="364" height="353">
         <g fill="none" fillRule="evenodd">
           <path
             d="M362 2v349L2 349.82c25.202-82.144 72.087-156.235 140.654-222.272C211.222 61.51 284.337 19.66 362 2z"
@@ -147,13 +161,13 @@ const LevelModeControl = () => {
         </g>
       </svg>
       <div className={"str-sustain"}>
-        <Knob />
+        <Knob onChange={handleStringSustain} />
       </div>
       <div className={"str-volume"}>
-        <Knob />
+        <Knob onChange={handleStringVolume} />
       </div>
       <div className={"chord-volume"}>
-        <Knob />
+        <Knob onChange={handleChordVolume} />
       </div>
       <Button />
       <Button />

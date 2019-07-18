@@ -24,7 +24,6 @@ class MasterControl extends React.Component {
     })
   }
   render() {
-    console.log(this.state)
     return (
       <SectionContainer>
         <svg width="355" height="300" xmlns="http://www.w3.org/2000/svg">
@@ -101,12 +100,6 @@ class MasterControl extends React.Component {
       </SectionContainer>
     )
   }
-}
-
-const styles = {
-  masterControl: {
-    position: "relative",
-  },
 }
 
 export default MasterControl
