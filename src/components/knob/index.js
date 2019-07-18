@@ -25,15 +25,18 @@ const Knob = ({ onChange }) => {
         const x = cX - pts.x
         const y = cY - pts.y
 
-        let deg = (Math.atan(y / x) * 180) / Math.PI
-        // What exactly do these below 'ere mean?
-        const firstHalfRotation = (x < 0 && y >= 0) || (x < 0 && y < 0)
-        if (firstHalfRotation) {
-          deg += 90
-        } else {
-          deg += 270
-        }
-        return Math.min(Math.max(START_ANGLE, deg), END_ANGLE)
+        const degree = (Math.atan(y / x) * 180) / Math.PI
+
+        const firstHalfofVolumeControl = (x < 0 && y >= 0) || (x < 0 && y < 0)
+
+        const QUARTER_OFFSET = 90
+        const THREE_QUARTER_OFFSET = 270
+
+        const degreeWithOffset = firstHalfofVolumeControl
+          ? degree + QUARTER_OFFSET
+          : degree + THREE_QUARTER_OFFSET
+
+        return Math.min(Math.max(START_ANGLE, degreeWithOffset), END_ANGLE)
       }
 
       const currentDegree = getDegree(event.clientX, event.clientY, pts)
@@ -59,42 +62,24 @@ const Knob = ({ onChange }) => {
   }
 
   return (
-    <div
+    <svg
+      id="master-volume"
+      width="78px"
+      height="78px"
+      xmlns="http://www.w3.org/2000/svg"
       onMouseDown={startDrag}
-      className="knob inner"
-      style={{
-        width: "78px",
-        height: "78px",
-        transform: `rotate(${Math.min(degree, 260)}deg)`,
-        position: "absolute",
-        left: "249px",
-        top: "46px",
-      }}
+      style={{ transform: `rotate(${Math.min(degree, 260)}deg)` }}
     >
-      <svg
-        id="master-volume"
-        width="78px"
-        height="78px"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g transform="translate(-2 -2)" fill="none" fillRule="evenodd">
-          <circle
-            stroke="#795F4B"
-            fill="#947961"
-            cx="41.5"
-            cy="41.5"
-            r="38.5"
-          />
-          <path
-            d="M36 52L23 73"
-            stroke="#1D1313"
-            strokeWidth="4"
-            strokeLinecap="square"
-          />
-        </g>
-      </svg>
-      <div className="grip" />
-    </div>
+      <g transform="translate(-2 -2)" fill="none" fillRule="evenodd">
+        <circle stroke="#795F4B" fill="#947961" cx="41.5" cy="41.5" r="38.5" />
+        <path
+          d="M36 52L23 73"
+          stroke="#1D1313"
+          strokeWidth="4"
+          strokeLinecap="square"
+        />
+      </g>
+    </svg>
   )
 }
 

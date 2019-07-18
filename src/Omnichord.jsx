@@ -5,6 +5,7 @@ import LevelModeControl from "./components/level-mode-control"
 const Omnichord = () => (
   <div>
     <LevelModeControl />
+    <div style={{ height: "160px" }} />
     <MasterControl />
   </div>
 )

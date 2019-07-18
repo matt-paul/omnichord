@@ -1,0 +1,18 @@
+.str-sustain,
+.str-volume,
+.chord-volume {
+  position: absolute;
+  bottom: 64px;
+}
+
+.str-sustain {
+  left: 84px;
+}
+
+.str-volume {
+  left: 172px;
+}
+
+.chord-volume {
+  left: 260px;
+}

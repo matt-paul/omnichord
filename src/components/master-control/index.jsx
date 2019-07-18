@@ -1,5 +1,6 @@
 import React from "react"
 import OnOffButton from "../button"
+import SectionContainer from "../section-container"
 import VolumeControl from "../knob"
 
 class MasterControl extends React.Component {
@@ -23,8 +24,9 @@ class MasterControl extends React.Component {
     })
   }
   render() {
+    console.log(this.state)
     return (
-      <div style={styles.masterControl}>
+      <SectionContainer>
         <svg width="355" height="300" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(3 2)" fill="none" fillRule="evenodd">
             <path
@@ -85,8 +87,18 @@ class MasterControl extends React.Component {
         </svg>
 
         <OnOffButton toggleOnOff={this.togglePower} on={this.state.on} />
-        <VolumeControl onChange={this.handleChange} />
-      </div>
+        <div
+          style={{
+            width: "78px",
+            height: "78px",
+            position: "absolute",
+            left: "249px",
+            top: "46px",
+          }}
+        >
+          <VolumeControl onChange={this.handleChange} />
+        </div>
+      </SectionContainer>
     )
   }
 }
