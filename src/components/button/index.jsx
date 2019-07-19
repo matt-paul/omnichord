@@ -4,14 +4,12 @@ import styled from "styled-components"
 const Button = styled.button`
   background: none;
   border: none;
-  width: 33px;
-  height: 42px;
   padding: 0;
 `
 
 const OmnichordButton = ({ toggleOnOff, on, colour }) => (
   <Button onClick={toggleOnOff}>
-    <svg>
+    <svg width="33" height="42">
       <path
         d="M1 1v40h31V1z"
         fill={colour}

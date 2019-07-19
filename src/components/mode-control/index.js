@@ -6,17 +6,17 @@ import Button from "../button"
 import SectionContainer from "../section-container"
 import Background from "../mode-control-background"
 
-import "./style.css"
+import { BLUE, BROWNISH } from "../../colours"
 
 const ChordStyle = styled.div`
   position: absolute;
-  right: 54px;
+  left: 277px;
   top: 125px;
 `
 
 const ChordHold = styled.div`
   position: absolute;
-  right: 133px;
+  left: 198px;
   top: 125px;
 `
 
@@ -60,7 +60,6 @@ const ModeControl = () => {
   const handleAutoBassManualToggle = () =>
     setState({ ...state, autoBassManualToggle: !state.autoBassManualToggle })
 
-  console.log(state)
   return (
     <SectionContainer>
       <Background />
@@ -77,7 +76,7 @@ const ModeControl = () => {
         <Button
           toggleOnOff={handleChordHoldToggle}
           on={state.chordHoldToggle}
-          colour="#A8835A"
+          colour={BROWNISH}
         />
       </ChordHold>
 
@@ -85,7 +84,7 @@ const ModeControl = () => {
         <Button
           toggleOnOff={handleAutoBassManualToggle}
           on={state.autoBassManualToggle}
-          colour="#22374A"
+          colour={BLUE}
         />
       </ChordStyle>
     </SectionContainer>

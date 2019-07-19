@@ -1,13 +1,16 @@
 import React from "react"
 import MasterControl from "./components/master-control"
 import ModeControl from "./components/mode-control"
+// import RhythmControl from "./components/rhythm-control"
+import ChordControl from "./components/chord-control"
 
 const Omnichord = () => (
-  <div>
+  <>
     <ModeControl />
-    <div style={{ height: "160px" }} />
+    {/* <RhythmControl /> */}
+    <ChordControl />
     <MasterControl />
-  </div>
+  </>
 )
 
 export default Omnichord
