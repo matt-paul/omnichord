@@ -1,13 +1,9 @@
 import React from "react"
+import styled from "styled-components"
 
-const SectionContainer = ({ children }) => (
-  <div style={styles.masterControl}>{children}</div>
-)
-
-const styles = {
-  masterControl: {
-    position: "relative",
-  },
-}
+const Container = styled.div`
+  position: relative;
+`
+const SectionContainer = ({ children }) => <Container>{children}</Container>
 
 export default SectionContainer
