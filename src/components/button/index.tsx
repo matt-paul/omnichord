@@ -7,8 +7,15 @@ const Button = styled.button`
   padding: 0;
 `
 
-const OmnichordButton = ({ toggleOnOff, on, colour }) => (
-  <Button onClick={toggleOnOff}>
+type ButtonColour = "#22374A" | "#A8835A" | "#900921"
+
+interface Props {
+  onClick: any
+  on?: boolean
+  colour: ButtonColour
+}
+const OmnichordButton = ({ onClick, on, colour }: Props) => (
+  <Button onClick={onClick}>
     <svg width="33" height="42">
       <path
         d="M1 1v40h31V1z"

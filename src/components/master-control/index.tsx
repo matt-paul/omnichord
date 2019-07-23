@@ -6,6 +6,8 @@ import SectionContainer from "../section-container"
 import Knob from "../knob"
 import Background from "../master-control-background"
 
+import { RED } from "../../colours"
+
 const Power = styled.div`
   left: 144px;
   position: absolute;
@@ -31,7 +33,7 @@ const MasterControl = () => {
     })
   }
 
-  const handleChange = newValue => {
+  const handleChange = (newValue: number) => {
     setState({
       ...state,
       volume: newValue,
@@ -42,7 +44,7 @@ const MasterControl = () => {
     <SectionContainer>
       <Background powerOn={state.on} />
       <Power>
-        <Button toggleOnOff={togglePower} on={state.on} colour="#900921" />
+        <Button onClick={togglePower} on={state.on} colour={RED} />
       </Power>
       <MasterVolume>
         <Knob onChange={handleChange} />

@@ -1,27 +1,40 @@
 import React, { useState } from "react"
 
-const Knob = ({ onChange }) => {
+interface Props {
+  onChange: any
+}
+const Knob = ({ onChange }: Props) => {
   const START_ANGLE = 10
   const END_ANGLE = 280
   const MIN_VOLUME = 1
   const MAX_VOLUME = 128
 
-  const convertRange = (oldMin, oldMax, newMin, newMax, oldValue) =>
-    ((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin) + newMin
+  const convertRange = (
+    oldMin: number,
+    oldMax: number,
+    newMin: number,
+    newMax: number,
+    oldValue: number,
+  ) => ((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin) + newMin
 
   const [degree, setDegree] = useState(START_ANGLE)
 
-  const startDrag = event => {
+  const startDrag = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    const knob = event.target.getBoundingClientRect()
+    const target = event.target as HTMLElement
+    const knob = target.getBoundingClientRect()
 
     const pts = {
       x: knob.left + knob.width / 2,
       y: knob.top + knob.height / 2,
     }
 
-    const moveHandler = event => {
-      const getDegree = (cX, cY, pts) => {
+    const moveHandler = (event: MouseEvent) => {
+      const getDegree = (
+        cX: number,
+        cY: number,
+        pts: { x: number; y: number },
+      ) => {
         const x = cX - pts.x
         const y = cY - pts.y
 

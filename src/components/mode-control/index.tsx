@@ -46,13 +46,14 @@ const ModeControl = () => {
     chordHoldToggle: false,
     autoBassManualToggle: false,
   })
-  const handleStringSustain = value =>
+  const handleStringSustain = (value: number) =>
     setState({ ...state, stringSustain: value })
 
-  const handleStringVolume = value =>
+  const handleStringVolume = (value: number) =>
     setState({ ...state, stringVolume: value })
 
-  const handleChordVolume = value => setState({ ...state, chordVolume: value })
+  const handleChordVolume = (value: number) =>
+    setState({ ...state, chordVolume: value })
 
   const handleChordHoldToggle = () =>
     setState({ ...state, chordHoldToggle: !state.chordHoldToggle })
@@ -74,7 +75,7 @@ const ModeControl = () => {
       </ChordVolume>
       <ChordHold>
         <Button
-          toggleOnOff={handleChordHoldToggle}
+          onClick={handleChordHoldToggle}
           on={state.chordHoldToggle}
           colour={BROWNISH}
         />
@@ -82,7 +83,7 @@ const ModeControl = () => {
 
       <ChordStyle>
         <Button
-          toggleOnOff={handleAutoBassManualToggle}
+          onClick={handleAutoBassManualToggle}
           on={state.autoBassManualToggle}
           colour={BLUE}
         />

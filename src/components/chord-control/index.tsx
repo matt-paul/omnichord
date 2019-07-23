@@ -4,10 +4,12 @@ import SectionContainer from "../section-container"
 
 import { majorChords } from "./majorChords"
 import { BROWNISH } from "../../colours"
+import { Chord } from "../../types"
 
-// generic button is toggle, need to make toggle and press options
-export const renderChordButtons = chords =>
-  chords.map(chord => <Button key={chord.key} colour={BROWNISH} />)
+export const renderChordButtons = (chords: Chord[]) =>
+  chords.map(chord => (
+    <Button key={chord.key} colour={BROWNISH} onClick={() => undefined} />
+  ))
 
 const ChordControl = () => (
   <SectionContainer>{renderChordButtons(majorChords)}</SectionContainer>

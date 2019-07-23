@@ -1,10 +1,14 @@
 import React from "react"
 import { useSpring, animated } from "react-spring"
 
-const Background = ({ powerOn }) => {
+interface Props {
+  powerOn: boolean
+}
+const Background = ({ powerOn }: Props) => {
   const aniProps = useSpring({
-    to: [{ opacity: 1, config: { duration: 3000 } }],
+    config: { duration: 3000 },
     from: { opacity: 0 },
+    to: { opacity: 1 },
   })
   return (
     <svg width="355" height="300">
