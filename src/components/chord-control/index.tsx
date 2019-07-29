@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import SectionContainer from "../section-container"
 import ChordButton from "../chord-button"
 import { majorChords } from "./majorChords"

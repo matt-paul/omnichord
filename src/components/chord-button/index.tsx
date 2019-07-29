@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { majorChords } from "../chord-control/majorChords"
 
 interface Props {
@@ -8,8 +8,8 @@ interface Props {
 }
 
 const ChordButton = ({ colour, url, context }: Props) => {
-  let omniBuffer: any
-  let fired = false
+  const [buffer, setBuffer] = useState(null)
+  const [fired, setFired] = useState(false)
 
   React.useEffect(() => {
     fetch(url)
@@ -21,7 +21,7 @@ const ChordButton = ({ colour, url, context }: Props) => {
       })
       .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
       .then(audioBuffer => {
-        omniBuffer = audioBuffer
+        setBuffer(audioBuffer)
       })
       .catch(err => console.log(err))
   }, [context, url])
@@ -29,10 +29,9 @@ const ChordButton = ({ colour, url, context }: Props) => {
   const handleKeyDown = (e: any) => {
     const chord = majorChords.find(chord => chord.keyCode === e.keyCode)
     if (chord && !fired) {
-      fired = true
-      console.log(chord)
+      setFired(true)
       const source = context.createBufferSource()
-      source.buffer = omniBuffer
+      source.buffer = buffer
       source.connect(context.destination)
       source.start()
 
@@ -40,7 +39,7 @@ const ChordButton = ({ colour, url, context }: Props) => {
         if (source) {
           source.stop(context.currentTime)
           source.disconnect()
-          fired = false
+          setFired(false)
         }
       })
     }
@@ -48,7 +47,7 @@ const ChordButton = ({ colour, url, context }: Props) => {
 
   const handleMouseClick = () => {
     const source = context.createBufferSource()
-    source.buffer = omniBuffer
+    source.buffer = buffer
     source.connect(context.destination)
     source.start()
 

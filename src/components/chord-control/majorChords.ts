@@ -4,6 +4,7 @@ export const majorChords = [
     keyCode: 65,
     note: "Db",
     src: "https://omnichord-audio.s3-eu-west-1.amazonaws.com/db-major.wav",
+
   },
   {
     key: 2,
