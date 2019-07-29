@@ -4,17 +4,18 @@ import ModeControl from "./components/mode-control"
 import RhythmControl from "./components/rhythm-control"
 import ChordControl from "./components/chord-control"
 
+const ctx = new AudioContext()
+export const OmniContext = React.createContext(ctx)
+
 const Omnichord = () => {
-  // const ctx = new AudioContext()
-  // const OmniContext = React.createContext(ctx)
   return (
     <>
-      {/* <OmniContext.Provider value={ctx}> */}
-      <ModeControl />
-      <RhythmControl />
-      <ChordControl />
-      <MasterControl />
-      {/* </OmniContext.Provider> */}
+      <OmniContext.Provider value={ctx}>
+        <ModeControl />
+        <RhythmControl />
+        <ChordControl />
+        <MasterControl />
+      </OmniContext.Provider>
     </>
   )
 }

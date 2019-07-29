@@ -5,24 +5,15 @@ import { majorChords } from "./majorChords"
 import { BROWNISH } from "../../colours"
 import { Chord } from "../../types"
 
-export const renderChordButtons = (chords: Chord[], context: any) =>
+export const renderChordButtons = (chords: Chord[]) =>
   chords.map(chord => (
-    <ChordButton
-      key={chord.key}
-      context={context}
-      url={chord.src}
-      colour={BROWNISH}
-    />
+    <ChordButton key={chord.key} url={chord.src} colour={BROWNISH} />
   ))
 
 const ChordControl = () => {
-  const ctx = new AudioContext()
-
   return (
     <SectionContainer>
-      <div style={{ display: "flex" }}>
-        {renderChordButtons(majorChords, ctx)}
-      </div>
+      <div style={{ display: "flex" }}>{renderChordButtons(majorChords)}</div>
     </SectionContainer>
   )
 }

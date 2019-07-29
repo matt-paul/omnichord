@@ -1,15 +1,14 @@
-import React, { useState } from "react"
-import { majorChords } from "../chord-control/majorChords"
+import React, { useState, useContext } from "react"
+import { OmniContext } from "../../Omnichord"
 
 interface Props {
   colour: string
-  context: any
   url: string
 }
 
-const ChordButton = ({ colour, url, context }: Props) => {
-  const [buffer, setBuffer] = useState(null)
-  const [fired, setFired] = useState(false)
+const ChordButton = ({ colour, url }: Props) => {
+  const [buffer, setBuffer] = useState()
+  const context = useContext(OmniContext)
 
   React.useEffect(() => {
     fetch(url)
@@ -26,25 +25,6 @@ const ChordButton = ({ colour, url, context }: Props) => {
       .catch(err => console.log(err))
   }, [context, url])
 
-  const handleKeyDown = (e: any) => {
-    const chord = majorChords.find(chord => chord.keyCode === e.keyCode)
-    if (chord && !fired) {
-      setFired(true)
-      const source = context.createBufferSource()
-      source.buffer = buffer
-      source.connect(context.destination)
-      source.start()
-
-      document.addEventListener("keyup", function() {
-        if (source) {
-          source.stop(context.currentTime)
-          source.disconnect()
-          setFired(false)
-        }
-      })
-    }
-  }
-
   const handleMouseClick = () => {
     const source = context.createBufferSource()
     source.buffer = buffer
@@ -58,7 +38,6 @@ const ChordButton = ({ colour, url, context }: Props) => {
       }
     })
   }
-  document.addEventListener("keydown", handleKeyDown)
 
   return (
     <div
