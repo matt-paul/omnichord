@@ -62,7 +62,6 @@ const RhythmControl = () => {
   const handleRhythmVolume = (value: number) =>
     setState({ ...state, volume: value })
 
-  console.log(state)
   return (
     <SectionContainer>
       <BlueButton>
