@@ -2,19 +2,16 @@ import { createStore } from "redux"
 
 import rootReducer, { AppState } from "./reducers"
 
-export const defaultState = {
-  // beats: {
-  //   activeBeat: "rockOne",
-  //   beats: [{ name: "rockOne", src: "/path" }],
-  // },
-}
+export const defaultState = {}
 
 const w: any = window as any
 
 const isDev: boolean = process.env.NODE_ENV === "development"
 
 const devTools =
-  isDev && w.devToolsExtension ? w.devToolsExtension() : (f: any) => f
+  isDev && w.__REDUX_DEVTOOLS_EXTENSION__
+    ? w.__REDUX_DEVTOOLS_EXTENSION__()
+    : (f: any) => f
 
 const configureStore = (initialState: AppState | any = defaultState) =>
   createStore(rootReducer, initialState, devTools)

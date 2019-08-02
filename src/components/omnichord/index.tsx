@@ -1,8 +1,8 @@
 import React from "react"
-import MasterControl from "./components/master-control"
-import ModeControl from "./components/mode-control"
-import RhythmControl from "./components/rhythm-control"
-import ChordControl from "./components/chord-control"
+import MasterControl from "../master-control"
+import ModeControl from "../mode-control"
+import RhythmControl from "../rhythm-control"
+import ChordControl from "../chord-control"
 
 const ctx: AudioContext = new (AudioContext ||
   (window as any).webkitAudioContext)()

@@ -1,5 +1,5 @@
 import React, { useState, useContext, FunctionComponent } from "react"
-import { OmniContext } from "../../Omnichord"
+import { OmniContext } from "../omnichord"
 
 interface IProps {
   colour: string

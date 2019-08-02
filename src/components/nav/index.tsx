@@ -1,44 +1,22 @@
-import React from "react"
-import { connect } from "react-redux"
+import React, { FunctionComponent } from "react"
+import { Link } from "react-router-dom"
 
-import Component from "./component"
-
-import { Dispatch } from "redux"
-
-import {
-  login,
-  logout,
-  Actions,
-  LoginActionCreator,
-  LogoutActionCreator,
-} from "../../redux/reducers/auth"
-
-interface IDispatchProps {
-  login: LoginActionCreator
-  logout: LogoutActionCreator
-}
-
-const mapStateToProps = ({
-  auth: { isAuthenticated },
-}: {
-  auth: { isAuthenticated: boolean }
-}) => ({
-  isAuthenticated,
-})
-
-const mapDispatchToProps = (dispatch: Dispatch<Actions>): IDispatchProps => ({
-  login: () => dispatch(login()),
-  logout: () => dispatch(logout()),
-})
-
-interface IProps extends IDispatchProps {
+interface IProps {
+  login: () => void
+  logout: () => void
   isAuthenticated: boolean
 }
-const NavContainer = ({ login, logout, isAuthenticated }: IProps) => (
-  <Component login={login} logout={logout} isAuthenticated={isAuthenticated} />
+const Nav: FunctionComponent<IProps> = ({ isAuthenticated, login, logout }) => (
+  <nav>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+      </li>
+    </ul>
+    {!isAuthenticated && <button onClick={login}>Login</button>}
+    {isAuthenticated && <button onClick={logout}>Logout</button>}
+  </nav>
 )
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(NavContainer)
+export default Nav
