@@ -1,10 +1,10 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { useSpring, animated } from "react-spring"
 
-interface Props {
+interface IProps {
   powerOn: boolean
 }
-const Background = ({ powerOn }: Props) => {
+const Background: FunctionComponent<IProps> = ({ powerOn }) => {
   const aniProps = useSpring({
     config: { duration: 3000 },
     from: { opacity: 0 },

@@ -1,6 +1,6 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 
-const ModeControlBackground = () => (
+const ModeControlBackground: FunctionComponent = () => (
   <svg width="364" height="353">
     <g fill="none" fillRule="evenodd">
       <path

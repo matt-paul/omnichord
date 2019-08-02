@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, FunctionComponent } from "react"
 import styled from "styled-components"
 import Background from "../rhythm-control-background"
 import Knob from "../knob"
@@ -50,7 +50,7 @@ const Waltz = styled.div`
   top: 58px;
 `
 
-const RhythmControl = () => {
+const RhythmControl: FunctionComponent = () => {
   const [state, setState] = useState({
     topRow: true,
     activeBeat: "rockOne",

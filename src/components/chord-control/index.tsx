@@ -10,12 +10,10 @@ export const renderChordButtons = (chords: Chord[]) =>
     <ChordButton key={chord.key} url={chord.src} colour={BROWNISH} />
   ))
 
-const ChordControl: FunctionComponent = () => {
-  return (
-    <SectionContainer>
-      <div style={{ display: "flex" }}>{renderChordButtons(majorChords)}</div>
-    </SectionContainer>
-  )
-}
+const ChordControl: FunctionComponent = () => (
+  <SectionContainer>
+    <div style={{ display: "flex" }}>{renderChordButtons(majorChords)}</div>
+  </SectionContainer>
+)
 
 export default ChordControl

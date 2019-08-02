@@ -3,18 +3,26 @@ import { Action } from "../../reducers"
 // Actions
 const LOGIN = "LOGIN"
 const LOGOUT = "LOGOUT"
+const AUTHENTICATION_REQUEST = "AUTHENTICATION_REQUEST"
+const AUTHENTICATION_SUCCESS = "AUTHENTICATION_SUCCESS"
+const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR"
 
-export type LoginAction = Action<"LOGIN">
-export type LogoutAction = Action<"LOGOUT">
+// export type LoginAction = Action<"LOGIN">
+// export type LogoutAction = Action<"LOGOUT">
 
-export type Actions = LoginAction | LogoutAction
+export type Actions = Action<"LOGIN"> | Action<"LOGOUT">
 
 // Action creators
-export const login = (): LoginAction => ({ type: LOGIN })
-export const logout = (): LogoutAction => ({ type: LOGOUT })
+export function login(): Action<"LOGIN"> {
+  return { type: LOGIN }
+}
 
-export type LoginActionCreator = () => LoginAction
-export type LogoutActionCreator = () => LogoutAction
+export function logout(): Action<"LOGOUT"> {
+  return { type: LOGOUT }
+}
+
+// export type LoginActionCreator = () => LoginAction
+// export type LogoutActionCreator = () => LogoutAction
 
 // Reducer
 interface IAuthState {
@@ -24,7 +32,8 @@ interface IAuthState {
 export const defaultState = {
   isAuthenticated: false,
 }
-const authReducer = (state: IAuthState = defaultState, action: Actions) => {
+
+function authReducer(state: IAuthState = defaultState, action: Actions) {
   switch (action.type) {
     case LOGIN:
       return Object.assign({}, state, { isAuthenticated: true })

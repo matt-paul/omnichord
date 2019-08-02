@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -8,7 +8,7 @@ const Container = styled.div`
 interface IProps {
   children: any
 }
-const SectionContainer = ({ children }: IProps) => (
+const SectionContainer: FunctionComponent<IProps> = ({ children }) => (
   <Container>{children}</Container>
 )
 

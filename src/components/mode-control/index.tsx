@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, FunctionComponent } from "react"
 import styled from "styled-components"
 
 import Knob from "../knob"
@@ -38,7 +38,7 @@ const ChordVolume = styled.div`
   left: 260px;
 `
 
-const ModeControl = () => {
+const ModeControl: FunctionComponent = () => {
   const [state, setState] = useState({
     stringSustain: 0,
     stringVolume: 0,

@@ -1,6 +1,6 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 
-const RhythmControl = () => {
+const RhythmControl: FunctionComponent = () => {
   return (
     <div>
       <svg width="379" height="289" xmlns="http://www.w3.org/2000/svg">

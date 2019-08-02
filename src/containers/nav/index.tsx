@@ -5,17 +5,13 @@ import Component from "../../components/nav"
 
 import { Dispatch } from "redux"
 
-import {
-  login,
-  logout,
-  Actions,
-  LoginActionCreator,
-  LogoutActionCreator,
-} from "../../reducers/auth"
+import { login, logout, Actions } from "../../reducers/auth"
+
+import { Action } from "../../reducers"
 
 interface IDispatchProps {
-  login: LoginActionCreator
-  logout: LogoutActionCreator
+  login: () => Action<"LOGIN">
+  logout: () => Action<"LOGOUT">
 }
 
 const mapStateToProps = ({

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import MasterControl from "../master-control"
 import ModeControl from "../mode-control"
 import RhythmControl from "../rhythm-control"
@@ -8,17 +8,13 @@ const ctx: AudioContext = new (AudioContext ||
   (window as any).webkitAudioContext)()
 export const OmniContext = React.createContext(ctx)
 
-const Omnichord = () => {
-  return (
-    <>
-      <OmniContext.Provider value={ctx}>
-        <ModeControl />
-        <RhythmControl />
-        <ChordControl />
-        <MasterControl />
-      </OmniContext.Provider>
-    </>
-  )
-}
+const Omnichord: FunctionComponent = () => (
+  <OmniContext.Provider value={ctx}>
+    <ModeControl />
+    <RhythmControl />
+    <ChordControl />
+    <MasterControl />
+  </OmniContext.Provider>
+)
 
 export default Omnichord

@@ -1,6 +1,5 @@
 import { combineReducers, Reducer } from "redux"
 
-// import beatsReducer from "./beats"
 import authReducer from "./auth"
 
 export interface Action<Type, Payload = {}> {
