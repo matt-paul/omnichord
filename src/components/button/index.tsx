@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const Button = styled.button`
@@ -9,12 +9,16 @@ const Button = styled.button`
 
 type ButtonColour = "#22374A" | "#A8835A" | "#900921"
 
-interface Props {
+interface IProps {
   onClick: any
   on?: boolean
   colour: ButtonColour
 }
-const OmnichordButton = ({ onClick, on, colour }: Props) => (
+const OmnichordButton: FunctionComponent<IProps> = ({
+  onClick,
+  on,
+  colour,
+}) => (
   <Button onClick={onClick}>
     <svg width="33" height="42">
       <path

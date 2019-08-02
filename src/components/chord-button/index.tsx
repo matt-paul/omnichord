@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, FunctionComponent } from "react"
 import { OmniContext } from "../../Omnichord"
 
-interface Props {
+interface IProps {
   colour: string
   url: string
 }
 
-const ChordButton = ({ colour, url }: Props) => {
+const ChordButton: FunctionComponent<IProps> = ({ colour, url }) => {
   const [buffer, setBuffer] = useState()
   const context = useContext(OmniContext)
 

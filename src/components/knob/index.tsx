@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, FunctionComponent } from "react"
 
-interface Props {
+interface IProps {
   onChange: any
 }
-const Knob = ({ onChange }: Props) => {
+const Knob: FunctionComponent<IProps> = ({ onChange }) => {
   const START_ANGLE = 10
   const END_ANGLE = 280
   const MIN_VOLUME = 1

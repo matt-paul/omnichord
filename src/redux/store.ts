@@ -3,10 +3,10 @@ import { createStore } from "redux"
 import rootReducer, { AppState } from "./reducers"
 
 export const defaultState = {
-  beats: {
-    activeBeat: "rockOne",
-    beats: [{ name: "rockOne", src: "/path" }],
-  },
+  // beats: {
+  //   activeBeat: "rockOne",
+  //   beats: [{ name: "rockOne", src: "/path" }],
+  // },
 }
 
 const w: any = window as any

@@ -1,6 +1,7 @@
 import { combineReducers, Reducer } from "redux"
 
-import beatsReducer from "./beats"
+// import beatsReducer from "./beats"
+import authReducer from "./auth"
 
 export interface Action<Type, Payload = {}> {
   type: Type
@@ -8,7 +9,7 @@ export interface Action<Type, Payload = {}> {
 }
 
 const appReducer: Reducer = combineReducers({
-  beats: beatsReducer,
+  auth: authReducer,
 })
 
 export default appReducer

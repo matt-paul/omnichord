@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, FunctionComponent } from "react"
 import styled from "styled-components"
 import Button from "../button/index"
 
@@ -20,7 +20,7 @@ const MasterVolume = styled.div`
   top: 46px;
 `
 
-const MasterControl = () => {
+const MasterControl: FunctionComponent = () => {
   const [state, setState] = useState({
     on: false,
     volume: 0,

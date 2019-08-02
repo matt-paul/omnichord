@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import SectionContainer from "../section-container"
 import ChordButton from "../chord-button"
 import { majorChords } from "./majorChords"
@@ -10,7 +10,7 @@ export const renderChordButtons = (chords: Chord[]) =>
     <ChordButton key={chord.key} url={chord.src} colour={BROWNISH} />
   ))
 
-const ChordControl = () => {
+const ChordControl: FunctionComponent = () => {
   return (
     <SectionContainer>
       <div style={{ display: "flex" }}>{renderChordButtons(majorChords)}</div>
